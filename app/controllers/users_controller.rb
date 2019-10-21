@@ -1,7 +1,14 @@
 class UsersController < ApplicationController
   
-  	def show
-    @user = User.find(params[:id])
+  def show
+
+    if @user = User.find(params[:id])
+        render 'show'
+    else @user.valid?
+
+        flash[:dagger] = "sdas"
+    end
+
   end
 
 	def new
@@ -18,21 +25,6 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
-
- 
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   private
 
