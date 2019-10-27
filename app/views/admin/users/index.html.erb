@@ -1,0 +1,19 @@
+<% provide(:title, 'All users') %>
+<h1>All users</h1>
+<ul class="users">
+  <li>
+    <% @users.each do |user| %>
+      <% if !current_user?(user) %>
+        <%= link_to user.name, user %>
+        <%= user.email %>
+        <%= button_to "delete", admin_user_path(user), method: :delete,
+                                      data: { confirm: "You sure?" } %>
+        <% if user.admin? %>
+          <%= button_to " change to normal user", admin_user_set_to_normal_user_path(user) %>
+        <% else %>
+          <%= button_to "change to admin", admin_user_create_admin_path(user) %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </li>
+</ul>

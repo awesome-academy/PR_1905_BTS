@@ -4,7 +4,7 @@ class CreateActivities < ActiveRecord::Migration[5.2]
       t.integer :user_id
       t.integer :tour_id
       t.integer :booking_id
-      t.enums :favorite
+      t.integer :favorite
 
       t.timestamps
     end
