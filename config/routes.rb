@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   get    '/login',    to: 'sessions#new'
   post   '/login',    to: 'sessions#create'
   delete '/logout',   to: 'sessions#destroy'
-
   resources :users, only: [:index, :create, :new, :show,:edit, :update]
 
   namespace :admin do
@@ -16,7 +15,6 @@ Rails.application.routes.draw do
     match :create_admin, via: [:post]
     match :set_to_normal_user, via: [:post]
     end
-
     resources :tours, only: [:new, :create, :destroy, :update]
   end
 end

@@ -2,12 +2,9 @@
 <h1>All users</h1>
 
 <ul class="users">
-  <li>
-    <% @users.each do |user| %>
-        <li>
-        <%= link_to user.name, user %>
-        <%= user.email %>
-        </li>
-    <% end %>
-  </li>
+  <% @users.each do |user| %>
+    <li>
+      <%= link_to user.name, user %>
+    </li>
+  <% end %>
 </ul>
