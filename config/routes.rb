@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get    '/login',    to: 'sessions#new'
   post   '/login',    to: 'sessions#create'
   delete '/logout',   to: 'sessions#destroy'
+  get 'search', to: "tours#search"
   resources :users, only: [:index, :create, :new, :show,:edit, :update]
 
   namespace :admin do
