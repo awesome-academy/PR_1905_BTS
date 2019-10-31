@@ -6,7 +6,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @product = Product.find(params[:id])
+    # @comment = current_user.comment.build(comment_params)
+    @comments = @product.comments.order("created_at DESC")
+    @comments = Comment.paginate(:page => params[:page], :per_page => 3).order("created_at DESC")
+    @reviews = @user.reviews.paginate(page: params[:page])
     if @user.nil?
       flash[:danger] = "User not found!"
       redirect_to root_path

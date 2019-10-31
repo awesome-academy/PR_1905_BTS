@@ -5,8 +5,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :email
       t.integer :age
       t.string :phone
-
       t.timestamps
     end
+    add_index :reviews, [:user_id, :created_at]
   end
 end

@@ -1,0 +1,26 @@
+<li id="review-<%= review.id %>">
+  <%= link_to gravatar_for(review.user, size: 50), review.user %>
+  <span class="user"><%= link_to review.user.name, review.user %></span>
+  <span class="content">
+    <strong> <%= review.content %> </strong>
+    <%= image_tag review.picture.url if review.picture? %>
+  </span>
+    <div class="col-md-6"; style="color:Blue;">
+    <%= review.likes.count %>
+    </div>
+  <span class="timestamp">
+  Posted <%= time_ago_in_words(review.created_at) %> ago.
+  <% if current_user?(review.user) %>
+    <%= link_to "delete", review, method: :delete,
+                                     data: { confirm: "You sure?" } %>
+    <% if review.likes.exists?(user_id: current_user.id) %>
+      <%= button_to "unlike", like_path(id: review.likes.find_by(user_id: current_user.id).id),
+        method: :delete, class: "btn btn-primary btn-lg" %>
+    <% else %>
+    <%= button_to "like", likes_path(review_id: review.id), class: "btn btn-primary btn-lg" %>
+    <% end %>
+  <% end %>
+</span>
+    <%= render 'comments/comments', review: review %>
+    <%= render 'comments/form', review: review %>
+</li>
