@@ -1,0 +1,9 @@
+<% @bookings.each do | booking| %>
+  <%= booking.phone %>
+  <%= booking.people_number %>
+  <%= booking.payment %>
+  <%= booking.status %>
+  <% if booking.reject
+  <%= button_to "approve", admin_booking_path(booking, approve: true), method: :patch %>
+  <%= button_to "reject", admin_booking_path(booking, reject: true), method: :patch %>
+<% end %>

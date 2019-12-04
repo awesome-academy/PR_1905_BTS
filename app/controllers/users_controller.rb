@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:index, :edit, :update]
+  before_action :logged_in_user, only: [:update, :edit]
   before_action :correct_user, only: [:edit, :update]
   def index
     @users = User.all
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     end
   end
 
-	def new
+  def new
     @user = User.new
   end
 
@@ -24,6 +24,7 @@ class UsersController < ApplicationController
       flash[:success] = "HK Travel"
       redirect_to @user
     else
+      flash.now[:danger] = "cant create user"
       render 'new'
     end
   end
@@ -43,6 +44,7 @@ class UsersController < ApplicationController
   end
 
   private
+
   def user_params
     params.require(:user).permit(:name, :email, :password,
                                  :password_confirmation, :age, :phone, :admin)

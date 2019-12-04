@@ -1,0 +1,17 @@
+<% @tour.reviews.each do |r| %>
+  <div class="content">
+      <h1> <%= r.title %> </h1>
+      <strong><%= r.content %></strong>
+  </div>
+  <div class="row">
+    <div id="btn-like-<%= r.id %>">
+      <% if logged_in? && current_user.liked?(r.id) %>
+        <%= render "likes/unlike", review: r %>
+      <% else %>
+        <%= render "likes/like", review: r %>
+      <% end %>
+      </div>
+      <%= render "comments/comment", review: r %>
+      <%= render "comments/form", review: r %>
+   </div>
+<% end %>

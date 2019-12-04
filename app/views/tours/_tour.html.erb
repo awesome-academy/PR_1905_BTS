@@ -1,17 +1,27 @@
-<div class="destination item">
-  <div class="destination_image">
-      <%= image_tag tour.picture.url if tour.picture? %>
-    <div class="spec_offer text-center">
-      <%= link_to tour.place, "#" %>
+<div class="container">
+  <div class="card">
+    <div class="container-fliud">
+      <div class="wrapper row">
+        <div class="preview col-md-6">
+          <div class="preview-pic tab-content">
+            <div class="tab-pane active" id="pic-1"> <%= image_tag @tour.picture.url if @tour.picture? %></div>
+          </div>
+        </div>
+        <div class="details col-md-6">
+          <h3 class="product-title"><%= link_to @tour.name, @tour %></h3>
+          <div class="rating">
+            <span class="review-no"> Ngày bắt đầu: <%= @tour.start_at%> </span>
+          </div>
+          <p class="product-description"> Số Ngày: <%= @tour.number_of_day %></p>
+          <h4 class="price">Giá tiền: <span><%= @tour.price %></span></h4>
+          <h5 class="sizes"> Địa Điểm:
+          <%= @tour.place %>
+          </h5>
+          <div class="action">
+          <%= link_to "Đặt Tour", new_tour_booking_path(@tour),class: "add-to-cart btn btn-default" %>
+         </div>
+        </div>
+      </div>
     </div>
-  </div>
-  <div class="destination_content">
-    <div class="destination_title">
-      <%= link_to tour.name, tour_path(tour) %>
-    </div>
-    <div class="destination_subtitle">
-      <p class="destination_price"><%= tour.price %>day</p>
-    </div>
-    <div class="destination_price"><%= tour.price %><% %></div>
   </div>
 </div>

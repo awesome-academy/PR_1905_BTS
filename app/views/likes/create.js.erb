@@ -1,0 +1,5 @@
+<% if @result %>
+  $("#btn-like-<%= @review.id %>").html("<%= j render partial: 'likes/unlike', locals: {review: @review} %>");
+<% else %>
+  alert("Update error")
+<% end %>

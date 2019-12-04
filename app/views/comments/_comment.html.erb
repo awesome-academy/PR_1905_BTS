@@ -1,0 +1,11 @@
+ <% review.comments.each do |c|%>
+ <ul>
+  <li> <%= c.comment %> </li>
+  <span>
+    <% if current_user?(c.user) %>
+      <%= link_to "delete", [ review , c ] , method: :delete,
+                                     data: { confirm: "You sure?" } %>
+    <% end %>
+  </span>
+  </ul>
+<% end %>

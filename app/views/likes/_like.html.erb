@@ -1,0 +1,4 @@
+<%= review.likes.count %>
+<%= link_to review_likes_path(review.id), method: :post, remote: true, class: "navbar-brand" do %>
+  <i class="fa fa-thumbs-up"></i>
+<% end %>

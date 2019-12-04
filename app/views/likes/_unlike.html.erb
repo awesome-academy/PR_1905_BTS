@@ -1,0 +1,4 @@
+<%= review.likes.count %>
+<%= link_to review_like_path(review, user_like_review(review)), method: :delete, remote: true, class: "navbar-brand" do %>
+  <i class="fa fa-thumbs-down"></i>
+<% end %>

@@ -4,7 +4,7 @@ class Admin::ToursController < Admin::BaseController
   end
 
   def show
-    @tour = Tour.find params[id]
+    @tour = Tour.find params[:id]
   end
 
   def new
@@ -14,7 +14,7 @@ class Admin::ToursController < Admin::BaseController
   def create
     @tour = Tour.new(tour_params)
     if @tour.save
-      flash.now[:success] = "tour created"
+      flash[:success] = "tour created"
       redirect_to admin_tours_path
     else
       flash.now[:danger] = "create tour failed"
@@ -25,7 +25,7 @@ class Admin::ToursController < Admin::BaseController
   def destroy
     @tour = Tour.find params[:id]
     if @tour.destroy
-      flash.now[:success] = " tour deleted"
+      flash[:success] = " tour deleted"
       redirect_to admin_tours_path
     else
       flash.now[:danger] = " not be deleted"
@@ -34,12 +34,14 @@ class Admin::ToursController < Admin::BaseController
   end
 
   def edit
+    @tour = Tour.find params[:id]
   end
 
   def update
+    @tour = Tour.find params[:id]
     if @tour.update tour_params
-      flash.now[:success] =  "tour update success"
-      redirect_to admin_tours_path
+      flash[:success] =  "tour update success"
+      redirect_to @tour
     else
       flash.now[:danger] =  "tour update fail"
       render :edit

@@ -1,0 +1,8 @@
+<% provide :title, "New Booking" %>
+<div class="row justify-content-center">
+  <div class="col-9">
+    <%= render "tours/tour" %>
+    <%= render 'shared/error_messages', object: @booking %>
+    <%= render "booking_form" %>
+  </div>
+</div>

@@ -1,7 +1,36 @@
-<% provide :title, t(".edit") %>
-<%= provide :button_text, t(".update") %>
-<div class="row justify-content-center">
-  <div class="col-9">
-    <%= render "form" %>
+<% provide :title, "edit tour" %>
+<h1> Edit Tour</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@tour, url: admin_tour_path) do |f| %>
+      <%= render "shared/error_messages", object: f.object %>
+
+      <%= f.label :name %>
+      <%= f.text_field :name, class: 'form-control'%>
+
+      <%= f.label :place %>
+      <%= f.text_field :place, class: 'form-control' %>
+
+      <%= f.label :price %>
+      <%= f.number_field :price, class: 'form-control' %>
+
+      <%= f.label :start_at %>
+      <%= f.date_field :start_at %>
+
+      <%= f.label :number_of_day %>
+      <%= f.text_field :number_of_day, class: 'form-control' %>
+
+      <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+
+      <%= f.submit "Update Tour", class: "btn btn-primary" %>
+    <% end %>
   </div>
 </div>
+<script type="text/javascript">
+  $('#tour_picture').bind('change', function() {
+    var size_in_megabytes = this.files[0].size/1024/1024;
+    if (size_in_megabytes > 5) {
+      alert('Maximum file size is 5MB. Please choose a smaller file.');
+    }
+  });
+</script>

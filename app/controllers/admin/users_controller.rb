@@ -7,9 +7,6 @@ class Admin::UsersController < Admin::BaseController
     @user = User.find(params[:id])
   end
 
-  def create
-  end
-
   def update
     @user = User.find(params[:id])
     @user.update admin: user_params[:admin]

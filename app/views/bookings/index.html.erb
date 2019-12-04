@@ -1,0 +1,8 @@
+<% @bookings.each do | booking| %>
+  <% if logged_in? && current_user.booked?(booking.id) %>
+    <%= booking.phone %>
+    <%= booking.people_number %>
+    <%= booking.payment %>
+    <%= booking.status %>
+  <% end %>
+<% end %>

@@ -1,10 +1,39 @@
 <% provide(:title, @user.name) %>
-<div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
-        <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
+<div class="container">
+  <div class="row">
+  <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+   <br>
+  </div>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= @user.name %></h3>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class=" col-md-9 col-lg-9 ">
+              <table class="table table-user-information">
+                <tbody>
+                  <tr>
+                    <td>Số Điện thoại</td>
+                    <td> <%= @user.phone %></td>
+                  </tr>
+                  <tr>
+                    <td>Số Tuổi  </td>
+                    <td> <%= @user.age %> </td>
+                  </tr>
+                  <tr>
+                    <td>Địa chỉ email: </td>
+                    <td> <%= @user.email%> </td>
+                  </tr>
+                </tbody>
+              </table>
+              <%= link_to "Chỉnh sửa thông tin cá nhân", edit_user_path(current_user),class: "btn btn-primary" %>
+              <%= link_to "Đăng xuất", logout_path, method: :delete,class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,23 +1,36 @@
 class BookingsController < ApplicationController
   before_action :logged_in_user
   before_action :load_tour
+  def index
+    @bookings = Booking.all
+  end
+
+  def new
+    @booking = Booking.new
+  end
+
   def create
     @booking = current_user.bookings.build booking_params
     @booking.tour = @tour
     if @booking.save
-      flash.now[:success] = "booking success"
-      redirect_to tours_path
+      flash[:success] = "booking success"
+      redirect_to bookings_path
     else
-      flash.now[:dagger] = "booking fail"
-      redirect_to tours_path
+      flash.now[:danger] = " cant booking "
+      render "new"
     end
   end
-  def destroy
 
+  def destroy
+    Booking.find(params[:id]).destroy
+    flash[:success] = "book tour deleted"
+    redirect_to bookings_path
   end
+
   private
+
   def booking_params
-    params.require(:booking).permit(:quantity, :tour_id, :user_id)
+    params.require(:booking).permit(:phone, :people_number, :status)
   end
 
   def load_tour

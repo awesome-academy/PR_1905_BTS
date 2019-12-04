@@ -1,8 +1,6 @@
 class Tour < ApplicationRecord
-  belongs_to :booking, optional: true
-  has_many  :reviews
-  has_many  :ratings
-  has_many  :activities
+  has_many  :bookings
+  has_many  :reviews, dependent: :destroy
   validates :place, presence: true
   validates :price, numericality: {only_integer: true}
   validates :name, presence: true, uniqueness: true
@@ -11,7 +9,6 @@ class Tour < ApplicationRecord
   validates :number_of_day, presence: true
   mount_uploader :picture, PictureUploader
   validate  :picture_size
-  accepts_nested_attributes_for :reviews
   private
   def start_at_cannot_less_current_time
     if start_at.present? && start_at < Date.today
