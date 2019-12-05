@@ -1,8 +1,44 @@
 <% @bookings.each do | booking| %>
   <% if logged_in? && current_user.booked?(booking.id) %>
-    <%= booking.phone %>
-    <%= booking.people_number %>
-    <%= booking.payment %>
-    <%= booking.status %>
+    <div class="container">
+      <div class="row">
+      <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+       <br>
+      </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+          <div class="panel panel-info">
+            <div class="panel-heading">
+              <h3 class="panel-title">Booking</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class=" col-md-9 col-lg-9 ">
+                  <table class="table table-user-information">
+                    <tbody>
+                      <tr>
+                        <td>Số ID </td>
+                        <td><%= booking.id %></td>
+                      </tr>
+                      <tr>
+                        <td>Số Điện thoại</td>
+                        <td><%= booking.phone %></td>
+                      </tr>
+                      <tr>
+                        <td> Số người:  </td>
+                        <td> <%= booking.people_number %> Người</td>
+                      </tr>
+                      <tr>
+                        <td>Status: </td>
+                        <td > <%= booking.status %> </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   <% end %>
 <% end %>

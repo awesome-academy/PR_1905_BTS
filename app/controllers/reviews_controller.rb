@@ -28,7 +28,6 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-
   end
 
   private
