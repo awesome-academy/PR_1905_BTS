@@ -28,6 +28,9 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    @review = Review.find_by id: params[:id]
+    @review.destroy
+    redirect_to tour_path(@review.tour)
   end
 
   private

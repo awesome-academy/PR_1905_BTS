@@ -18,13 +18,15 @@
             <h4 class="price">Giá tiền: <span><%= tour.price %></span></h4>
             <h5 class="sizes">Địa Điểm:
             <%= tour.place %>
-            </h5>
+            </div>
             <div class="action">
-             <%= link_to "Đặt Tour", new_tour_booking_path(tour),class: "add-to-cart btn btn-default" %>
+              <ul><%= link_to "edit tour", edit_admin_tour_path(tour.id), class: "btn btn-primary"%></ul>
+            </br>
+              <ul><%= link_to "delete",admin_tour_path(tour), method: :delete, data: { confirm: "You sure?"}, class: "btn btn-primary" %></ul>
             </div>
           </div>
         </div>
-      </div>
+      </div>  
     </div>
   </div>
 <% end %>
