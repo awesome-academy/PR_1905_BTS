@@ -1,9 +1,10 @@
 <% provide(:title, @tour.name) %>
 <%=  render 'tour' %>
-<%=  render 'reviews/review' %>
 <br>
 <div>
-  <div class="col-md-6 col-md-offset-2">
+  <div>
     <%=  link_to 'Create Review', new_tour_review_path(@tour),class: "btn btn-primary" %>
     </div>
 </div>
+<%=  render 'reviews/review' %>
+

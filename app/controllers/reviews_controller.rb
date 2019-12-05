@@ -18,17 +18,22 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def edit
+    @review = Review.find_by(id: params[:id])
+  end
+
   def update
+    @review = Review.find_by(id: params[:id])
     if @review.update review_params
       flash[:success] = "Success Update"
-      redirect_to @review
+      redirect_to tour_path(@review.tour)
     else
       render :edit
     end
   end
 
   def destroy
-    @review = Review.find_by id: params[:id]
+    @review = Review.find_by(id: params[:id])
     @review.destroy
     redirect_to tour_path(@review.tour)
   end

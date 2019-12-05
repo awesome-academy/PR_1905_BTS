@@ -4,8 +4,10 @@
       <strong><%= r.content %></strong>
       <span>
       <% if current_user?(r.user) %>
-        <%= link_to "delete", review_path(@tour), method: :delete,
+        <%= link_to "delete", review_path(r), method: :delete,
                                        data: { confirm: "You sure?" } %>
+        <%= link_to "edit", edit_review_path(r) %>
+
       <% end %>
     </span>
   </div>
