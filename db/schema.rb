@@ -10,8 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2019_12_03_150533) do
 
-ActiveRecord::Schema.define(version: 2019_12_04_075151) do
   create_table "activities", force: :cascade do |t|
     t.integer "user_id"
     t.integer "tour_id"
@@ -25,29 +25,20 @@ ActiveRecord::Schema.define(version: 2019_12_04_075151) do
     t.integer "user_id"
     t.integer "payment"
     t.integer "tour_id"
-
+    t.string "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "people_number"
     t.integer "status", default: 0
-    t.string "phone"
   end
 
   create_table "comments", force: :cascade do |t|
+    t.integer "review_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "comment"
     t.integer "user_id"
-    t.integer "review_id"
-  end
-
-  create_table "likes", force: :cascade do |t|
-    t.integer "review_id"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["review_id"], name: "index_likes_on_review_id"
-    t.index ["user_id"], name: "index_likes_on_user_id"
+    t.index ["review_id"], name: "index_comments_on_review_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -64,11 +55,6 @@ ActiveRecord::Schema.define(version: 2019_12_04_075151) do
     t.integer "paymentID"
     t.integer "booking_id"
     t.string "purchase_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "pictures", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

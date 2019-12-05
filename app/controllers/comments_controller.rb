@@ -15,6 +15,15 @@ class CommentsController < ApplicationController
     end
   end
 
+  def update
+    if @comment.update comment_params
+      flash[:success] = "Success Update"
+      redirect_to @review
+    else
+      render :edit
+    end
+  end
+
   def destroy
     @comment = Comment.find_by id: params[:id]
     @comment.destroy

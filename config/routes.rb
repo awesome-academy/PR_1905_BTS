@@ -11,8 +11,8 @@ Rails.application.routes.draw do
     resources :ratings, only: :create
   end
   resources :bookings, only: :index
-  resources :reviews, only: [:create, :update, :destroy] do
-    resources :likes, only: [:create, :destroy]
+  resources :reviews, only: [:create, :update, :destroy, :edit] do
+    resources :likes, only: [:create, :destroy, :edit]
     resources :comments
   end
 
